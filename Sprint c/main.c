@@ -9,17 +9,6 @@ int calculo_porcentagem(int porcentagem_atual, int porcentagem_final){
     return porcentagem_final-porcentagem_atual;
 }
 
-// criando uma função que calcula a potencia
-float calculo_potencia(float tempo, float potencia){
-    // temos variaveis como o tempo da recarga e a potencia
-    // criamos uma variavel que contem o calculo para calcular a potencia
-    float calculo;
-    // calculamos a potencia
-    calculo=potencia*(tempo/60.0);
-    // retornamos a variavel calculo
-    return calculo;
-}
-
 // criando uma funçãp que calcula os kwh
 float calculo_kwh(int porcentagem_atual, int porcentagem_final, float bateria_total){
     // temos variaveis como a porcentagem atual, a porcentagem final e a potencia da bateria
