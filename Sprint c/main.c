@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <unistd.h>
+#include <windows.h>
 
 int calculo_porcentagem(int porcentagem_atual, int porcentagem_final){
     return porcentagem_final-porcentagem_atual;
@@ -44,7 +44,7 @@ int main() {
     float troco;
     
     printf("----------SIMULADOR DE RECARGA----------\n");
-    sleep(1);
+    Sleep(1000);
     
     printf("Digite a capacidade da bateria do carro (kWh): ");
     scanf("%f",&bateria_total);
@@ -59,23 +59,31 @@ int main() {
     
     switch (escolha){
         case 1:
-            printf("Digite a porcentagem de sua bateria (em %): ");
+            printf("Digite a porcentagem de sua bateria (em porcentagem): ");
             scanf("%d",&porcentagem);
             if (porcentagem<0 || porcentagem>100){
                 printf("Porcentagem invalida\n");
+                return 0;
+            }
+            else if (porcentagem==100){
+                printf("A bateria ja esta cheia");
                 return 0;
             }
             porcentagem_final=100;
             break;
             
         case 2:
-            printf("Digite a porcentagem de sua bateria (em %): ");
+            printf("Digite a porcentagem de sua bateria (em porcentagem): ");
             scanf("%d",&porcentagem);
             if (porcentagem<0 || porcentagem>100){
                 printf("Porcentagem invalida\n");
                 return 0;
             }
-            printf("Deseja carregar ate quantos %? ");
+            else if (porcentagem==100){
+                printf("A bateria ja esta cheia");
+                return 0;
+            }
+            printf("Deseja carregar ate quantos porcento ? ");
             scanf("%d",&porcentagem_final);
             if (porcentagem_final<0 || porcentagem_final>100 || porcentagem_final<=porcentagem){
                 printf("Porcentagem invalida\n");
@@ -112,7 +120,7 @@ int main() {
     printf("Carregando...\n");
     for (int i=porcentagem; i<=porcentagem_final; i++){
         printf("%d%%\n",i);
-        sleep(1);
+        Sleep(1000);
     }
     
     printf("Carga concluida!!\n");
