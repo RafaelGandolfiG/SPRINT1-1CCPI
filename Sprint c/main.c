@@ -41,13 +41,13 @@ float calcular_tempo(float energia, float potencia){
 }
 
 int main() {
-    
+
     // declarando variaveis int
     int porcentagem;
     int porcentagem_final;
     int calculo;
     int escolha;
-    
+
     // declarando variaveis float
     float potencia=11.0;
     float tarifa=1.30;
@@ -58,29 +58,38 @@ int main() {
     float custo;
     float dinheiro;
     float troco;
-    
+
     // inicio do programa
     printf("----------SIMULADOR DE RECARGA----------\n");
     // delay de 1 segundo
     Sleep(1000);
-    
+
     // pergunta a capacidade da bateria do carro do cliente
     printf("Digite a capacidade da bateria do carro (kWh): ");
     // le a capacidade da bateria e guarda na variavel bateria_total
     scanf("%f",&bateria_total);
-    
+
     // se a variavel bateria_total for ou igual a zero
     if (bateria_total<=0){
         printf("Bateria invalida\n");
         // encerra o programa
         return 0;
     }
-    
-    // cria um menu de opções
-    printf("1-Carregar ate 100%%\n2-Carregar ate x%%\nEscolha: ");
-    // le a opção e guarda na variavel escolha
-    scanf("%d",&escolha);
-    
+
+    // cria um menu de opções com validação usando do-while
+    // executa o do
+    do {
+        printf("1-Carregar ate 100%%\n2-Carregar ate x%%\nEscolha: ");
+        // le a opção e guarda na variavel escolha
+        scanf("%d",&escolha);
+        // se o if vor verdadeiro
+        if (escolha!=1 && escolha!=2){
+            // mostra que a escolha foi invalida
+            printf("Escolha invalida\n");
+        }
+    // enquanto a variavel escolha for diferente de 1 e 2
+    } while (escolha!=1 && escolha!=2);
+
     // switch da variavel escolha
     switch (escolha){
         // caso seja igual a 1
@@ -139,43 +148,67 @@ int main() {
             }
             // break do switch
             break;
-        
+
         // caso nao seja nem 1 ou 2
         default:
             printf("Escolha invalida");
             // encerra o porgrama
             return 0;
     }
-    
+    // cria a variavel calculo que guarda a função calculo_porcentagem
+    // utiliza as variaveis porcentagem e porcentagem_final como argumentos
     calculo=calculo_porcentagem(porcentagem,porcentagem_final);
-    
+
+    // cria a variavel energia que guarda a função calculo_kwh
+    // utiliza as variaveis porcentagem, porcentagem_final e bateria_total como argumentos
     energia=calculo_kwh(porcentagem,porcentagem_final,bateria_total);
+    // cria a variavel tempo_hora que guarda a função calcular_tempo
+    // utiliza as variaveis energia e potencia como argumentos
     tempo_hora=calcular_tempo(energia,potencia);
+    // cria a variavel tempo_min que é o produto da variavel tempo_hora por 60
     tempo_min=tempo_hora*60;
+    // cria a variavel custo que é o produto da tarifa pela energia
     custo=energia*tarifa;
-    
+
+    // mostra a quantidade em % que ira ser carregada
     printf("Carregar %d%%\n",calculo);
+    // mostra o total a ser pago
     printf("Total a pagar R$%.2f\n",custo);
+    // pergunta ao usuario a quantia que ele dara 
     printf("Digite a quantia de dinheiro que ira fornecer: ");
+    // le e guarda a quantia na variavel dinheiro
     scanf("%f",&dinheiro);
-    
-    if (dinheiro<custo-0.01){
+
+    // se a variavel dinheiro for menor que o custo-0.001
+    if (dinheiro<custo-0.001){
+        // mostra que o saldo é insuficiente
         printf("Saldo insuficiente\n");
+        // encerra o programa
         return 0;
     }
+    // senão
     else{
+        // calcula o troco
         troco=dinheiro-custo;
+        // mostra o troco
         printf("Troco: R$ %.2f\n",troco);
     }
-    
+
     printf("Carregando...\n");
+    // começa a carregar
+    // para a porcentagem inicial, sendo ela menor ou igual a porcentagem final
+    // adiciona 1%
     for (int i=porcentagem; i<=porcentagem_final; i++){
+        // mostra a porcentagem da bateria
         printf("%d%%\n",i);
+        // delay de 1 segundo
         Sleep(1000);
     }
-    
+
+    // mostra que a carga foi concluida
     printf("Carga concluida!!\n");
-    
+
+    // mostra um relatorio formatado contendo todas as informações mais importantes
     printf("\n----------RELATORIO----------\n");
     printf("Bateria do carro: %.0f kWh\n",bateria_total);
     printf("Carga inicial: %d%%\n",porcentagem);
@@ -184,6 +217,7 @@ int main() {
     printf("Tempo estimado: %.2f horas (%.0f minutos)\n",tempo_hora,tempo_min);
     printf("Tarifa: R$ %.2f por kWh\n",tarifa);
     printf("Custo total: R$ %.2f\n",custo);
-    
+
+    // encerra o programa
     return 0;
 }
