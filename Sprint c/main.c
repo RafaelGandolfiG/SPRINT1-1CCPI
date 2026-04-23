@@ -38,8 +38,8 @@ int main() {
     int escolha;
 
     // declarando variaveis float
-    float potencia=11.0;
-    float tarifa=1.30;
+    float potencia=22.0;
+    float tarifa=0.80;
     float bateria_total;
     float tempo_hora;
     float tempo_min;
