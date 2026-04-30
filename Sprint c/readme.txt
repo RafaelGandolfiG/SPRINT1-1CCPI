@@ -29,3 +29,11 @@ porcentagem inicial e final, energia carregada, tempo estimado, tarifa aplicada 
 Além disso, foi utilizada a biblioteca windows.h, que permite o uso da função Sleep(), responsável por
 criar pequenos atrasos no programa. Essa função foi utilizada para simular o tempo de carregamento e tornar a
 execução mais próxima de um sistema real.
+
+Equipe 04 - 1CCPI
+
+Rafael Gandolfi Gonçalves - 569036 - 1CCPI
+Rafael Lins - 570588 - 1CCPI
+Cauã Paes - 569906 - 1CCPI
+Guilherme Miranda - 573107 - 1CCPI
+Carlos Eduardo - 572949 - 1CCPI
