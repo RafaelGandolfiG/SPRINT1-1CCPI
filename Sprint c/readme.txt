@@ -37,3 +37,4 @@ Rafael Lins - 570588 - 1CCPI
 Cauã Paes - 569906 - 1CCPI
 Guilherme Miranda - 573107 - 1CCPI
 Carlos Eduardo - 572949 - 1CCPI
+João Pedro Soler - 569725 - 1CCPI
